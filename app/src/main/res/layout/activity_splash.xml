@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.Design.Light"
+    android:layout_gravity="center"
+    tools:context=".SplashActivity"
+    android:background="@color/md_teal_500">
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/construct_hub_launcher"
+        android:cropToPadding="true"
+        android:fadingEdge="horizontal|vertical"
+        android:scaleType="center"
+        android:visibility="visible"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:id="@+id/splashText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_gravity="center"
+        android:singleLine="true"
+        android:text="@string/constructor_hub"
+        android:textColor="@android:color/background_light"
+        android:textSize="35sp"
+        android:textStyle="normal|bold"
+        android:typeface="monospace"/>
+
+</FrameLayout>
