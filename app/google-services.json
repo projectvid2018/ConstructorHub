@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "113930124719",
+    "firebase_url": "https://constructorhub-870f1.firebaseio.com",
+    "project_id": "constructorhub-870f1",
+    "storage_bucket": "constructorhub-870f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113930124719:android:76a67bb0d61eeffe",
+        "android_client_info": {
+          "package_name": "hub.constructor.constructorhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113930124719-j6jgumovivgkv4eoab0aibnl50ah67kl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hub.constructor.constructorhub",
+            "certificate_hash": "8c56fb5103ab7d311c26d711b2cc58329ce37328"
+          }
+        },
+        {
+          "client_id": "113930124719-angeo8f8agdu5anho5u6qcdnjf4foggv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYfh_MZup6j5FhbGATmQE6q27ZQxmCQWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113930124719-angeo8f8agdu5anho5u6qcdnjf4foggv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
