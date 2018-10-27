@@ -26,7 +26,7 @@
             android:longClickable="true"
             android:background="@color/md_red_600"
             android:elevation="7dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="top">
 
             <ImageView
@@ -37,12 +37,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="As a seller"
+                android:text="Seller mode"
                 android:textColor="@color/White"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp"/>
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp" />
 
         </LinearLayout>
 
@@ -59,7 +61,7 @@
             android:onClick="buyer"
             android:background="@color/md_light_blue_A200"
             android:elevation="7dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="bottom">
 
             <ImageView
@@ -70,12 +72,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="As a buyer"
-                android:textColor="@color/md_red_600"
+                android:text="Buyer Mode"
+                android:textColor="@color/md_red_500"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="20dp"/>
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp" />
 
         </LinearLayout>
     </LinearLayout>
