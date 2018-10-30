@@ -36,7 +36,7 @@
                 android:focusable="true"
                 android:hapticFeedbackEnabled="true"
                 android:padding="5dp"
-                app:cardBackgroundColor="@color/md_red_500"
+                app:cardBackgroundColor="@color/md_red_400"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="6dp"
                 tools:targetApi="lollipop">

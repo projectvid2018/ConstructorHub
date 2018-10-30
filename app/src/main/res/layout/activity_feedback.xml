@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     android:background="@color/AliceBlue"
-    tools:context=".FeedbackActivity">
+    tools:context=".nav.activity.FeedbackActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

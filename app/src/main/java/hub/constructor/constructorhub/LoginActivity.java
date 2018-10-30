@@ -8,12 +8,14 @@ import android.support.v7.widget.CardView;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import hub.constructor.constructorhub.start.activity.SignupActivity;
+import hub.constructor.constructorhub.nav.activity.SwitchActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

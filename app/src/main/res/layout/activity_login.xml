@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/md_teal_50"
-    android:theme="@style/Base.Theme.AppCompat.Light"
+    android:theme="@style/Theme.Design.Light"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -58,6 +58,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="10dp"
+            android:elevation="6dp"
             app:cardBackgroundColor="@color/md_teal_400"
             android:layout_gravity="center"
             >

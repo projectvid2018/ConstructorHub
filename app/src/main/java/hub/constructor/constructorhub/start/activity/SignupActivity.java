@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.start.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,14 +22,16 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.Calendar;
+import hub.constructor.constructorhub.MainActivity;
+import hub.constructor.constructorhub.People;
+import hub.constructor.constructorhub.R;
+import hub.constructor.constructorhub.nav.activity.SwitchActivity;
+
 
 public class SignupActivity extends AppCompatActivity {
     android.support.v7.widget.Toolbar toolbar;
 
     private static final String TAG= "SignupActivity";
-    private TextView mDisplayDate;
-    private  DatePickerDialog.OnDateSetListener mDatesetListener;
 
     private EditText editTextAddress;
     private EditText editTextUsername;
@@ -65,19 +66,23 @@ public class SignupActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addMember();
+            }
+        });
+
     }
 
-    public void SignUp(View view)
-    {
-        addMember();
-    }
+
 
     public void addMember(){
-        String address = editTextAddress.getText().toString().trim();
-        String username = editTextUsername.getText().toString().trim();
-        String phoneNo = editTextPhoneNo.getText().toString().trim();
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        final String address = editTextAddress.getText().toString().trim();
+        final String username = editTextUsername.getText().toString().trim();
+        final String phoneNo = editTextPhoneNo.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
 
         //Address
         if(address.isEmpty()){
@@ -131,22 +136,23 @@ public class SignupActivity extends AppCompatActivity {
 
 
         else{
-            String id = databaseReference.push().getKey();
-
-            People people = new People(id,address,username,phoneNo,email,password);
-            databaseReference.child(email).setValue(people);
 
 
 
-            progressBar.setVisibility(View.VISIBLE);
+//            progressBar.setVisibility(View.VISIBLE);
 
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    progressBar.setVisibility(View.GONE);
+                   // progressBar.setVisibility(View.GONE);
                     if(task.isSuccessful()){
                         Toast.makeText(getApplicationContext(),"User Registration Successful",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+
+                        String id = databaseReference.push().getKey();
+
+                        People people = new People(id,address,username,phoneNo,email,password);
+                        databaseReference.child(id).setValue(people);
+                        Intent intent = new Intent(getApplicationContext(),SwitchActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
 

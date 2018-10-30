@@ -4,9 +4,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -16,10 +13,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-public class Main2Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
+import hub.constructor.constructorhub.nav.activity.SettingsActivity;
+import hub.constructor.constructorhub.nav.activity.SwitchActivity;
+import hub.constructor.constructorhub.product.activity.PostedProductsActivity;
+import hub.constructor.constructorhub.supply.SupChatActivity;
+import hub.constructor.constructorhub.supply.SupNotificationActivity;
+import hub.constructor.constructorhub.supply.SupOrdersActivity;
+import hub.constructor.constructorhub.supply.SupTransactionActivity;
+
+public class sellerModeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,20 +63,20 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
         if (id == R.id.nav_profile) {
 
-            Intent intent = new Intent(Main2Activity.this,SwitchActivity.class);
+            Intent intent = new Intent(sellerModeActivity.this,SwitchActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_notifications) {
-            Intent intent = new Intent(Main2Activity.this,SupNotificationActivity.class);
+            Intent intent = new Intent(sellerModeActivity.this,SupNotificationActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(Main2Activity.this,SettingsActivity.class);
+            Intent intent = new Intent(sellerModeActivity.this,SettingsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_log_out) {
 
-            AlertDialog.Builder builder=new AlertDialog.Builder(Main2Activity.this); //-------Main is name of the activity
+            AlertDialog.Builder builder=new AlertDialog.Builder(sellerModeActivity.this); //-------Main is name of the activity
             builder.setMessage("Do you want to exit?");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -109,7 +114,7 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
 
         }
         else if (id == R.id.nav_feedback) {
-            Intent intent = new Intent(Main2Activity.this,FeedbackActivity.class);
+            Intent intent = new Intent(sellerModeActivity.this,FeedbackActivity.class);
             startActivity(intent);
 
         }
@@ -123,27 +128,27 @@ public class Main2Activity extends AppCompatActivity implements NavigationView.O
     CardView add_new_product , posted_products, sup_transaction, sup_orders, sup_chat;
 
     public void add_new_product(View view) {
-        Intent intent = new Intent(Main2Activity.this,AddNewProductActivity.class);
+        Intent intent = new Intent(sellerModeActivity.this,AddNewProductActivity.class);
         startActivity(intent);
     }
 
     public void posted_prducts(View view) {
-        Intent intent = new Intent(Main2Activity.this,PostedProductsActivity.class);
+        Intent intent = new Intent(sellerModeActivity.this,PostedProductsActivity.class);
         startActivity(intent);
     }
 
     public void sup_transaction(View view) {
-        Intent intent = new Intent(Main2Activity.this,SupTransactionActivity.class);
+        Intent intent = new Intent(sellerModeActivity.this,SupTransactionActivity.class);
         startActivity(intent);
     }
 
     public void sup_orders(View view) {
-        Intent intent = new Intent(Main2Activity.this,SupOrdersActivity.class);
+        Intent intent = new Intent(sellerModeActivity.this,SupOrdersActivity.class);
         startActivity(intent);
     }
 
     public void sup_chat(View view) {
-        Intent intent = new Intent(Main2Activity.this,SupChatActivity.class);
+        Intent intent = new Intent(sellerModeActivity.this,SupChatActivity.class);
         startActivity(intent);
     }
 

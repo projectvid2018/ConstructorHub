@@ -21,6 +21,30 @@ public class People {
         this.peoplePassword = peoplePassword;
     }
 
+    public void setPeopleId(String peopleId) {
+        this.peopleId = peopleId;
+    }
+
+    public void setPeopleUsername(String peopleUsername) {
+        this.peopleUsername = peopleUsername;
+    }
+
+    public void setPeopleAddress(String peopleAddress) {
+        this.peopleAddress = peopleAddress;
+    }
+
+    public void setPeoplePhone(String peoplePhone) {
+        this.peoplePhone = peoplePhone;
+    }
+
+    public void setPeopleEmail(String peopleEmail) {
+        this.peopleEmail = peopleEmail;
+    }
+
+    public void setPeoplePassword(String peoplePassword) {
+        this.peoplePassword = peoplePassword;
+    }
+
     public String getPeopleId() {
         return peopleId;
     }

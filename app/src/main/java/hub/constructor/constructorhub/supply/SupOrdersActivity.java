@@ -1,7 +1,9 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.supply;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import hub.constructor.constructorhub.R;
 
 public class SupOrdersActivity extends AppCompatActivity {
 

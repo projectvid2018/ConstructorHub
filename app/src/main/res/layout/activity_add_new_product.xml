@@ -1,9 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:background="@color/md_teal_50"
     tools:context=".AddNewProductActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <EditText
+            android:id="@+id/adheading"
+            android:layout_height="wrap_content"
+            android:hint="@string/heading"
+            android:textColorHint="@color/md_teal_400"
+            android:inputType="text"
+            android:layout_width="fill_parent"
+            android:autofillHints="" tools:targetApi="o">
+        </EditText>
+        <EditText
+            android:id="@+id/adcompany"
+            android:layout_height="wrap_content"
+            android:hint="@string/company_name"
+            android:textColorHint="@color/md_teal_400"
+            android:inputType="text"
+            android:layout_width="fill_parent"
+            android:autofillHints="" tools:targetApi="o">
+        </EditText>
+        <EditText
+            android:id="@+id/companyadd"
+            android:layout_height="wrap_content"
+            android:hint="@string/address"
+            android:textColorHint="@color/md_teal_400"
+            android:inputType="textPostalAddress"
+            android:layout_width="fill_parent"
+            android:autofillHints="" tools:targetApi="o">
+        </EditText>
+        <Spinner
+            android:id="@+id/servicetprovider"
+            android:layout_height="50dp"
+            android:layout_width="fill_parent"
+            android:entries="@array/serviceprovider"
+            android:contextClickable="true"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            android:focusable="true" tools:targetApi="m">
+        </Spinner>
+        <EditText
+            android:id="@+id/addescription"
+            android:layout_height="wrap_content"
+            android:hint="@string/full_description"
+            android:textColorHint="@color/md_teal_400"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:gravity="top"
+            android:layout_width="fill_parent"
+            android:autofillHints="" tools:targetApi="o">
+        </EditText>
+
+        <ImageView
+            android:id="@+id/adimg"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/todo" />
+        <Button
+            android:id="@+id/buttonLoadPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:background="@color/DodgerBlue"
+            android:text="@string/upload_images"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/ic_file_upload_24dp"
+            android:drawableTint="@color/SkyBlue"
+            android:layout_gravity="center"
+            android:padding="10dp" tools:targetApi="m"
+            android:drawableStart="@drawable/ic_file_upload_24dp" />
+
+        <Button
+            android:id="@+id/postadbtn"
+            android:layout_height="wrap_content"
+            android:text="@string/post"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:onClick="postAd"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/md_orange_500"
+            android:drawableRight="@drawable/ic_arrow_forward_24dp"
+            android:drawableTint="@color/md_teal_400"
+            android:clickable="true"
+            android:longClickable="true"
+            android:contextClickable="true"
+            android:padding="15dp"
+            tools:ignore="OnClick"
+            android:elevation="8dp"
+            android:layout_marginTop="10dp" tools:targetApi="m"
+            android:drawableEnd="@drawable/ic_arrow_forward_24dp"
+            android:focusable="true" />
+    </LinearLayout>
+</ScrollView>

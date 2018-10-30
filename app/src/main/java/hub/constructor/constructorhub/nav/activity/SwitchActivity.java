@@ -1,10 +1,14 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.nav.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import hub.constructor.constructorhub.sellerModeActivity;
+import hub.constructor.constructorhub.MainActivity;
+import hub.constructor.constructorhub.R;
 
 public class SwitchActivity extends AppCompatActivity {
 
@@ -17,7 +21,7 @@ public class SwitchActivity extends AppCompatActivity {
     LinearLayout buyer,seller;
 
     public void seller(View view) {
-        Intent intent = new Intent(SwitchActivity.this,Main2Activity.class);
+        Intent intent = new Intent(SwitchActivity.this,sellerModeActivity.class);
         startActivity(intent);
     }
 
