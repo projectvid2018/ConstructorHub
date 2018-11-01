@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.seller;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,14 +15,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.SettingsActivity;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
-import hub.constructor.constructorhub.product.activity.PostedProductsActivity;
-import hub.constructor.constructorhub.supply.SupChatActivity;
-import hub.constructor.constructorhub.supply.SupNotificationActivity;
-import hub.constructor.constructorhub.supply.SupOrdersActivity;
-import hub.constructor.constructorhub.supply.SupTransactionActivity;
+import hub.constructor.constructorhub.start.activity.LoginActivity;
 
 public class sellerModeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -83,10 +80,10 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
                 public void onClick(DialogInterface dialog, int id) {
 
                     finish();
-                    Intent i=new Intent();
-                    i.putExtra("finish", true);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //----------------------------------- To clean up all activities
-                    //startActivity(i);
+                    Intent intent=new Intent(sellerModeActivity.this,LoginActivity.class);
+                    intent.putExtra("finish", true);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //----------------------------------- To clean up all activities
+                    startActivity(intent);
                     finish();
 
                 }

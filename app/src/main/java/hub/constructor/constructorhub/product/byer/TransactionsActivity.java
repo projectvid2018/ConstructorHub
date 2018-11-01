@@ -1,7 +1,9 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.product.byer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import hub.constructor.constructorhub.R;
 
 public class TransactionsActivity extends AppCompatActivity {
 

@@ -1,13 +1,15 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.product.byer;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ChatActivity extends AppCompatActivity {
+import hub.constructor.constructorhub.R;
+
+public class WatchActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_watch);
     }
 }

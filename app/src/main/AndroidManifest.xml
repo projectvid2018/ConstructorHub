@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".product.byer.ByerModeActivity"
             android:label="@string/buyer_mode"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".SplashActivity">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".start.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".start.activity.LoginActivity"
             android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,69 +35,70 @@
             android:name=".nav.activity.FeedbackActivity"
             android:label="@string/feedback" />
         <activity
-            android:name=".product.activity.ProductsActivity"
+            android:name=".product.byer.ProductsActivity"
             android:label="@string/products"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".product.byer.ByerModeActivity" />
         <activity
-            android:name=".WatchActivity"
+            android:name=".product.byer.WatchActivity"
             android:label="@string/watch_history"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".product.byer.ByerModeActivity" />
         <activity
-            android:name=".TransactionsActivity"
+            android:name=".product.byer.TransactionsActivity"
             android:label="@string/transactions"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".product.byer.ByerModeActivity" />
         <activity
-            android:name=".OrdersActivity"
+            android:name=".product.byer.OrdersActivity"
             android:label="@string/orders"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".product.byer.ByerModeActivity" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".product.byer.ChatActivity"
             android:label="@string/live_chat"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".product.byer.ByerModeActivity" />
         <activity
             android:name=".nav.activity.SwitchActivity"
             android:label="@string/switch_profile" />
         <activity
-            android:name=".sellerModeActivity"
+            android:name=".seller.sellerModeActivity"
             android:label="@string/supplier_mode"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".supply.SupTransactionActivity"
+            android:name=".seller.SupTransactionActivity"
             android:label="@string/transactions"
-            android:parentActivityName=".sellerModeActivity" />
+            android:parentActivityName=".seller.sellerModeActivity" />
         <activity
-            android:name=".supply.SupChatActivity"
+            android:name=".seller.SupChatActivity"
             android:label="@string/live_chat"
-            android:parentActivityName=".sellerModeActivity" />
+            android:parentActivityName=".seller.sellerModeActivity" />
         <activity
-            android:name=".supply.SupOrdersActivity"
+            android:name=".seller.SupOrdersActivity"
             android:label="@string/orders"
-            android:parentActivityName=".sellerModeActivity" />
+            android:parentActivityName=".seller.sellerModeActivity" />
         <activity
-            android:name=".product.activity.PostedProductsActivity"
+            android:name=".seller.PostedProductsActivity"
             android:label="@string/posted_products"
-            android:parentActivityName=".sellerModeActivity" />
+            android:parentActivityName=".seller.sellerModeActivity" />
         <activity
-            android:name=".AddNewProductActivity"
+            android:name=".seller.AddNewProductActivity"
             android:label="@string/add_new_product"
-            android:parentActivityName=".sellerModeActivity" />
+            android:parentActivityName=".seller.sellerModeActivity" />
         <activity
             android:name=".nav.activity.NotificationsActivity"
             android:label="@string/notifications"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".product.byer.ByerModeActivity" />
         <activity
-            android:name=".supply.SupNotificationActivity"
+            android:name=".seller.SupNotificationActivity"
             android:label="@string/notifications"
-            android:parentActivityName=".sellerModeActivity" />
+            android:parentActivityName=".seller.sellerModeActivity" />
         <activity
-            android:name=".ForgotpassActivity"
+            android:name=".start.activity.ForgotpassActivity"
             android:label="Forget password" />
         <activity
             android:name=".start.activity.SignupActivity"
             android:label="Sign up" />
         <activity
             android:name=".nav.activity.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".ProductProfileActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.start.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import hub.constructor.constructorhub.start.activity.SignupActivity;
+import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         cardView = findViewById(R.id.cardViewIdLogIn);
         editTextEmail = findViewById(R.id.logInEmailId);

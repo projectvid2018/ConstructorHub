@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import hub.constructor.constructorhub.sellerModeActivity;
-import hub.constructor.constructorhub.MainActivity;
+import hub.constructor.constructorhub.seller.sellerModeActivity;
+import hub.constructor.constructorhub.product.byer.ByerModeActivity;
 import hub.constructor.constructorhub.R;
 
 public class SwitchActivity extends AppCompatActivity {
@@ -26,7 +26,7 @@ public class SwitchActivity extends AppCompatActivity {
     }
 
     public void buyer(View view) {
-        Intent intent = new Intent(SwitchActivity.this,MainActivity.class);
+        Intent intent = new Intent(SwitchActivity.this,ByerModeActivity.class);
         startActivity(intent);
     }
 }

@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.product.byer;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,13 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.NotificationsActivity;
 import hub.constructor.constructorhub.nav.activity.SettingsActivity;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
-import hub.constructor.constructorhub.product.activity.ProductsActivity;
+import hub.constructor.constructorhub.start.activity.LoginActivity;
 
-public class MainActivity extends AppCompatActivity
+public class ByerModeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -62,30 +63,30 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
 
-                Intent intent = new Intent(MainActivity.this,SwitchActivity.class);
+                Intent intent = new Intent(ByerModeActivity.this,SwitchActivity.class);
                 startActivity(intent);
 
         } else if (id == R.id.nav_notifications) {
-            Intent intent = new Intent(MainActivity.this,NotificationsActivity.class);
+            Intent intent = new Intent(ByerModeActivity.this,NotificationsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+            Intent intent = new Intent(ByerModeActivity.this,SettingsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_log_out) {
 
-            AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this); //-------Main is name of the activity
+            AlertDialog.Builder builder=new AlertDialog.Builder(ByerModeActivity.this); //-------Main is name of the activity
             builder.setMessage("Do you want to exit?");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
 
                     finish();
-                    Intent i=new Intent();
-                    i.putExtra("finish", true);
-                    i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //----------------------------------- To clean up all activities
-                    //startActivity(i);
+                    Intent intent =new Intent(ByerModeActivity.this,LoginActivity.class);
+                    intent.putExtra("finish", true);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //-------------------------------------- To clean up all activities
+                    startActivity(intent);
                     finish();
 
                 }
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_feedback) {
-            Intent intent = new Intent(MainActivity.this,FeedbackActivity.class);
+            Intent intent = new Intent(ByerModeActivity.this,FeedbackActivity.class);
             startActivity(intent);
 
         }
@@ -126,27 +127,27 @@ public class MainActivity extends AppCompatActivity
     CardView products, watch, transaction, orders, chat;
 
     public void products(View view) {
-        Intent intent = new Intent(MainActivity.this,ProductsActivity.class);
+        Intent intent = new Intent(ByerModeActivity.this,ProductsActivity.class);
         startActivity(intent);
     }
 
     public void watch(View view) {
-        Intent intent = new Intent(MainActivity.this,WatchActivity.class);
+        Intent intent = new Intent(ByerModeActivity.this,WatchActivity.class);
         startActivity(intent);
     }
 
     public void transaction(View view) {
-        Intent intent = new Intent(MainActivity.this,TransactionsActivity.class);
+        Intent intent = new Intent(ByerModeActivity.this,TransactionsActivity.class);
         startActivity(intent);
     }
 
     public void orders(View view) {
-        Intent intent = new Intent(MainActivity.this,OrdersActivity.class);
+        Intent intent = new Intent(ByerModeActivity.this,OrdersActivity.class);
         startActivity(intent);
     }
 
     public void chat(View view) {
-        Intent intent = new Intent(MainActivity.this,ChatActivity.class);
+        Intent intent = new Intent(ByerModeActivity.this,ChatActivity.class);
         startActivity(intent);
     }
 

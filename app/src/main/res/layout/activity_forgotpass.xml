@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/md_teal_50"
     android:theme="@style/Theme.Design.Light.NoActionBar"
-    tools:context=".ForgotpassActivity">
+    tools:context=".start.activity.ForgotpassActivity">
 
 
     <LinearLayout

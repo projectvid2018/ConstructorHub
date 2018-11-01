@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.start.activity;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -10,6 +10,8 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import java.util.Calendar;
+
+import hub.constructor.constructorhub.R;
 
 public class ForgotpassActivity extends AppCompatActivity {
 
