@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "113930124719-gksokh4rg6irobuh6vma2uhdoojuvpub.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hub.constructor.constructorhub",
+            "certificate_hash": "4c49b1ec0eae41df5b6522511f8d5cc1f4a77e35"
+          }
+        },
+        {
           "client_id": "113930124719-angeo8f8agdu5anho5u6qcdnjf4foggv.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -15,27 +15,29 @@
         android:padding="15dp">
 
         <EditText
-            android:id="@+id/adheading"
+            android:id="@+id/addHeadingId"
             android:layout_height="wrap_content"
             android:hint="@string/heading"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_headline_24dp"
-            android:autofillHints="" tools:targetApi="o">
+            android:autofillHints=""
+            tools:targetApi="o"
+            android:drawableStart="@drawable/ic_headline_24dp">
         </EditText>
         <EditText
-            android:id="@+id/adcompany"
+            android:id="@+id/addCompanyNameId"
             android:layout_height="wrap_content"
             android:hint="@string/company_name"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="text"
+            android:inputType="textPersonName"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_business_24dp"
             android:autofillHints="" tools:targetApi="o">
         </EditText>
         <EditText
-            android:id="@+id/companyadd"
+            android:id="@+id/companyAddId"
             android:layout_height="wrap_content"
             android:hint="@string/address"
             android:textColorHint="@color/md_teal_400"
@@ -45,7 +47,7 @@
             android:autofillHints="" tools:targetApi="o">
         </EditText>
         <Spinner
-            android:id="@+id/servicetprovider"
+            android:id="@+id/serviceProviderId"
             android:layout_height="50dp"
             android:layout_width="fill_parent"
             android:entries="@array/serviceprovider"
@@ -55,17 +57,17 @@
             android:focusable="true" tools:targetApi="m">
         </Spinner>
         <EditText
-            android:id="@+id/price"
+            android:id="@+id/addPriceId"
             android:layout_height="wrap_content"
             android:hint="price"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="textPostalAddress"
+            android:inputType="number"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_money_24dp"
             android:autofillHints="" tools:targetApi="o"/>
         <EditText
-            android:id="@+id/addescription"
-            android:layout_height="wrap_content"
+            android:id="@+id/addDescriptionId"
+            android:layout_height="100dp"
             android:hint="@string/full_description"
             android:textColorHint="@color/md_teal_400"
             android:inputType="textMultiLine"
@@ -75,28 +77,29 @@
             android:autofillHints="" tools:targetApi="o">
         </EditText>
 
-        <ImageView
-            android:id="@+id/adimg"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/todo" />
+
         <Button
-            android:id="@+id/buttonLoadPicture"
+            android:id="@+id/buttonLoadPictureId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/White"
             android:background="@color/DodgerBlue"
             android:text="@string/upload_images"
             android:textStyle="bold"
-            android:drawableLeft="@drawable/ic_file_upload_24dp"
             android:drawableTint="@color/SkyBlue"
             android:layout_gravity="center"
             android:padding="10dp" tools:targetApi="m"
-            android:drawableStart="@drawable/ic_file_upload_24dp" />
+            android:drawableStart="@drawable/ic_file_upload_24dp"
+            android:drawableLeft="@drawable/ic_file_upload_24dp" />
+        <ImageView
+            android:id="@+id/addImageId"
+            android:layout_width="fill_parent"
+            android:layout_height="250dp"
+            android:visibility="invisible"
+            android:contentDescription="@string/todo" />
 
         <Button
-            android:id="@+id/postadbtn"
+            android:id="@+id/postAddBtnId"
             android:layout_height="wrap_content"
             android:text="@string/post"
             android:textSize="25sp"
