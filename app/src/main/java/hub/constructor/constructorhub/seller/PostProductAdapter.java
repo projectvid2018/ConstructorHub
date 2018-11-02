@@ -20,6 +20,16 @@ public class PostProductAdapter extends RecyclerView.Adapter<PostProductAdapter.
 
     private Context mContext;
     private List<Upload> mUploads;
+    private OnItemClickListener mListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
+    }
+
 
     public PostProductAdapter(Context context, List<Upload> uploads){
 
@@ -39,12 +49,19 @@ public class PostProductAdapter extends RecyclerView.Adapter<PostProductAdapter.
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
 
         Upload uploadCurrent = mUploads.get(position);
+        String imageUrl = uploadCurrent.getmImageUrl();
+        String heading = uploadCurrent.getHeading();
+        String companyName = uploadCurrent.getCompanyName();
+        String address = uploadCurrent.getCompanyAddress();
+        String service = uploadCurrent.getService();
+        String price = uploadCurrent.getPrice();
+        String description = uploadCurrent.getDescription();
 
-        holder.textView1.setText(uploadCurrent.getHeading());
-        holder.textView2.setText(uploadCurrent.getService());
-        holder.textView3.setText(uploadCurrent.getPrice());
+        holder.textView1.setText(heading);
+        holder.textView2.setText(service);
+        holder.textView3.setText("Price: "+price+"Tk");
 
-        Picasso.with(mContext).load(uploadCurrent.getmImageUrl())
+        Picasso.with(mContext).load(imageUrl)
                 .placeholder(R.mipmap.ic_launcher)
                 .fit()
                 .centerCrop().into(holder.imageView1);
@@ -71,6 +88,20 @@ public class PostProductAdapter extends RecyclerView.Adapter<PostProductAdapter.
             textView2 = itemView.findViewById(R.id.postServiceId);
             textView3 = itemView.findViewById(R.id.postPriceId);
             imageView1 = itemView.findViewById(R.id.postImageId);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
+
         }
     }
 }

@@ -1,5 +1,6 @@
 package hub.constructor.constructorhub.product.byer;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,12 +17,21 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import hub.constructor.constructorhub.ProductDescriptionActivity;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.Upload;
 import hub.constructor.constructorhub.seller.PostProductAdapter;
 import hub.constructor.constructorhub.seller.PostedProductsActivity;
 
-public class ProductsActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity implements PostProductAdapter.OnItemClickListener {
+
+    public static final String EXTRA_URL = "imageUrl";
+    public static final String EXTRA_HEADING = "headingName";
+    public static final String EXTRA_COMPANY_NAME = "companyName";
+    public static final String EXTRA_COMPANY_ADDRESS = "companyAddress";
+    public static final String EXTRA_SERVICE = "service";
+    public static final String EXTRA_PRICE = "price";
+    public static final String EXTRA_DESCRIPTION = "description";
 
     private RecyclerView recyclerView;
     private PostProductAdapter mProductAdapter;
@@ -50,6 +60,8 @@ public class ProductsActivity extends AppCompatActivity {
                 mProductAdapter = new PostProductAdapter(ProductsActivity.this,mUploads);
                 recyclerView.setAdapter(mProductAdapter);
 
+                mProductAdapter.setOnItemClickListener(ProductsActivity.this);
+
             }
 
             @Override
@@ -62,4 +74,20 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        Intent detailIntent = new Intent(this, ProductDescriptionActivity.class);
+        Upload clickedItem = mUploads.get(position);
+
+        detailIntent.putExtra(EXTRA_URL, clickedItem.getmImageUrl());
+        detailIntent.putExtra(EXTRA_HEADING, clickedItem.getHeading());
+        detailIntent.putExtra(EXTRA_COMPANY_NAME, clickedItem.getCompanyName());
+        detailIntent.putExtra(EXTRA_COMPANY_ADDRESS, clickedItem.getCompanyAddress());
+        detailIntent.putExtra(EXTRA_SERVICE, clickedItem.getService());
+        detailIntent.putExtra(EXTRA_PRICE, clickedItem.getPrice());
+        detailIntent.putExtra(EXTRA_DESCRIPTION, clickedItem.getDescription());
+
+        startActivity(detailIntent);
+
+    }
 }

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    tools:context=".ProductDescriptionActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/productDetailsImageId"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productDetailsHeadingId"
+        android:textColor="@color/Black"
+        android:hint="@string/heading"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productDetailsCompanyNameId"
+        android:textColor="@color/Black"
+        android:hint="Company Name"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productDetailsAddressId"
+        android:textColor="@color/Black"
+        android:hint="@string/address"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productDetailsServiceId"
+        android:textColor="@color/Black"
+        android:hint="Service"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productDetailsPriceId"
+        android:textColor="@color/Black"
+        android:hint="Price"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/productDetailsDescriptionId"
+        android:hint="@string/description"
+        android:textColor="@color/Black"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        />
+
+    <Button
+        android:id="@+id/gotoChatId"
+        android:text="Send Message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center" />
+
+</LinearLayout>

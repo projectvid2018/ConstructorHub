@@ -107,5 +107,6 @@
     <string name="full_description">Full description....</string>
     <string name="upload_images">Upload Images</string>
     <string name="post">Post</string>
+    <string name="description">Description</string>
 
 </resources>

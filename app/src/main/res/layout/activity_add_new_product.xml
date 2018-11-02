@@ -44,7 +44,9 @@
             android:inputType="textPostalAddress"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_location_24dp"
-            android:autofillHints="" tools:targetApi="o">
+            android:autofillHints="Dhaka"
+            tools:targetApi="o"
+            android:drawableStart="@drawable/ic_location_24dp">
         </EditText>
         <Spinner
             android:id="@+id/serviceProviderId"
