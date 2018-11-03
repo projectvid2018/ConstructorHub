@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.NotificationsActivity;
@@ -75,6 +77,7 @@ public class ByerModeActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_log_out) {
+            FirebaseAuth.getInstance().signOut();
 
             AlertDialog.Builder builder=new AlertDialog.Builder(ByerModeActivity.this); //-------Main is name of the activity
             builder.setMessage("Do you want to exit?");

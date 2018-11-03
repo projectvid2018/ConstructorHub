@@ -119,7 +119,8 @@
                     android:layout_toEndOf="@+id/watch_history_icon"
                     android:layout_toRightOf="@+id/watch_history_icon"
                     android:padding="10dp"
-                    android:text="@string/watch_history"
+                    android:text="Wishlist"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="#fffaf0"
                     android:textSize="35sp" />
 
@@ -169,8 +170,9 @@
                     android:layout_toEndOf="@+id/transaction_icon"
                     android:layout_toRightOf="@+id/transaction_icon"
                     android:text="@string/transactions"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                     android:textColor="#fffaf0"
-                    android:textSize="33sp" />
+                    android:textSize="30sp" />
 
             </android.support.v7.widget.CardView>
         </LinearLayout>
