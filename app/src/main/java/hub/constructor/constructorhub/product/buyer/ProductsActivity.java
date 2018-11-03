@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub.product.byer;
+package hub.constructor.constructorhub.product.buyer;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -21,7 +21,6 @@ import hub.constructor.constructorhub.ProductDescriptionActivity;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.Upload;
 import hub.constructor.constructorhub.seller.PostProductAdapter;
-import hub.constructor.constructorhub.seller.PostedProductsActivity;
 
 public class ProductsActivity extends AppCompatActivity implements PostProductAdapter.OnItemClickListener {
 

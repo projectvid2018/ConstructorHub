@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub.product.byer;
+package hub.constructor.constructorhub.product.buyer;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -135,7 +135,7 @@ public class ByerModeActivity extends AppCompatActivity
     }
 
     public void watch(View view) {
-        Intent intent = new Intent(ByerModeActivity.this,WatchActivity.class);
+        Intent intent = new Intent(ByerModeActivity.this,WishActivity.class);
         startActivity(intent);
     }
 

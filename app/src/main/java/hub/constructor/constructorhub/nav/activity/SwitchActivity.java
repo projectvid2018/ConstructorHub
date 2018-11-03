@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import hub.constructor.constructorhub.seller.sellerModeActivity;
-import hub.constructor.constructorhub.product.byer.ByerModeActivity;
+import hub.constructor.constructorhub.product.buyer.ByerModeActivity;
 import hub.constructor.constructorhub.R;
 
 public class SwitchActivity extends AppCompatActivity {
