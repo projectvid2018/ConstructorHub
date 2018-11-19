@@ -17,7 +17,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import hub.constructor.constructorhub.ProductDescriptionActivity;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.Upload;
 import hub.constructor.constructorhub.seller.PostProductAdapter;
@@ -31,11 +30,12 @@ public class ProductsActivity extends AppCompatActivity implements PostProductAd
     public static final String EXTRA_SERVICE = "service";
     public static final String EXTRA_PRICE = "price";
     public static final String EXTRA_DESCRIPTION = "description";
+    public static final String EXTRA_SELLER_UID = "seller_uid";
+    public static final String EXTRA_BUYER_UID = "buyer_uid";
 
     private RecyclerView recyclerView;
     private PostProductAdapter mProductAdapter;
     private List<Upload> mUploads;
-    private DatabaseReference mRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class ProductsActivity extends AppCompatActivity implements PostProductAd
 
         mUploads = new ArrayList<>();
 
-        mRef = FirebaseDatabase.getInstance().getReference("AllUsers");
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("Uploaded Products");
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,6 +85,7 @@ public class ProductsActivity extends AppCompatActivity implements PostProductAd
         detailIntent.putExtra(EXTRA_SERVICE, clickedItem.getService());
         detailIntent.putExtra(EXTRA_PRICE, clickedItem.getPrice());
         detailIntent.putExtra(EXTRA_DESCRIPTION, clickedItem.getDescription());
+        detailIntent.putExtra(EXTRA_SELLER_UID,clickedItem.getUserUid());
 
         startActivity(detailIntent);
 

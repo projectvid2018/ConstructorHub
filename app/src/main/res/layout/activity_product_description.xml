@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,128 +8,144 @@
     android:orientation="vertical"
     android:layout_margin="10dp"
     android:baselineAligned="false"
-    tools:context=".ProductDescriptionActivity">
+    tools:context=".product.buyer.ProductDescriptionActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:id="@+id/productDetailsImageId"
-        android:layout_margin="5dp"
-        />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/productDetailsImageId"
+            android:layout_margin="5dp"
+            android:background="@color/WhiteSmoke"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/Teal"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetailsHeadingId"
+            android:textColor="@color/Black"
+            android:textColorHint="@color/md_teal_400"
+            android:layout_margin="5dp"
+            android:hint="@string/heading"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetailsCompanyNameId"
+            android:textColor="@color/Black"
+            android:textColorHint="@color/md_teal_400"
+            android:layout_margin="5dp"
+            android:hint="Company Name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetailsAddressId"
+            android:textColor="@color/Black"
+            android:textColorHint="@color/md_teal_400"
+            android:layout_margin="5dp"
+            android:hint="@string/address"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetailsServiceId"
+            android:layout_margin="5dp"
+            android:textColor="@color/Black"
+            android:textColorHint="@color/md_teal_400"
+            android:hint="Service"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productDetailsHeadingId"
-        android:textColor="@color/Black"
-        android:textColorHint="@color/md_teal_400"
-        android:layout_margin="5dp"
-        android:hint="@string/heading"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetailsPriceId"
+            android:layout_margin="5dp"
+            android:textColor="@color/Black"
+            android:textColorHint="@color/md_teal_400"
+            android:hint="Price"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDetailsDescriptionId"
+            android:layout_margin="5dp"
+            android:hint="@string/description"
+            android:textColor="@color/Black"
+            android:textColorHint="@color/md_teal_400"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+            />
+        <ProgressBar
+            android:id="@+id/productDetailsProgressbarId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="5dp"
+            android:visibility="gone"
+            tools:ignore="UnusedAttribute" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productDetailsCompanyNameId"
-        android:textColor="@color/Black"
-        android:textColorHint="@color/md_teal_400"
-        android:layout_margin="5dp"
-        android:hint="Company Name"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productDetailsAddressId"
-        android:textColor="@color/Black"
-        android:textColorHint="@color/md_teal_400"
-        android:layout_margin="5dp"
-        android:hint="@string/address"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productDetailsServiceId"
-        android:layout_margin="5dp"
-        android:textColor="@color/Black"
-        android:textColorHint="@color/md_teal_400"
-        android:hint="Service"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productDetailsPriceId"
-        android:layout_margin="5dp"
-        android:textColor="@color/Black"
-        android:textColorHint="@color/md_teal_400"
-        android:hint="Price"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="10dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/productDetailsDescriptionId"
-        android:layout_margin="5dp"
-        android:hint="@string/description"
-        android:textColor="@color/Black"
-        android:textColorHint="@color/md_teal_400"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-        />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="2"
-    android:layout_marginTop="10dp">
-    <Button
-        android:id="@+id/wishListId"
-        android:text="Wishlist"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:background="@color/DodgerBlue"
-        android:textColor="@color/White"
-        android:drawableTint="@color/BurlyWood"
-        android:elevation="8dp"
-        android:layout_weight="1"
-        android:layout_margin="5dp"/>
-    <Button
-        android:id="@+id/gotoChatId"
-        android:text="Send Message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:drawableRight="@drawable/ic_send_24dp"
-        android:background="@color/md_teal_500"
-        android:textColor="@color/White"
-        android:drawableTint="@color/BurlyWood"
-        android:layout_margin="5dp"
-        android:elevation="8dp"
-        android:layout_weight="1"/>
+            <Button
+                android:id="@+id/wishListId"
+                android:text="WishList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:background="@color/DodgerBlue"
+                android:textColor="@color/White"
+                android:drawableTint="@color/BurlyWood"
+                android:elevation="8dp"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                tools:targetApi="m" />
+            <Button
+                android:id="@+id/gotoChatId"
+                android:text="Send Message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:drawableRight="@drawable/ic_send_24dp"
+                android:background="@color/md_teal_500"
+                android:textColor="@color/White"
+                android:drawableTint="@color/BurlyWood"
+                android:layout_margin="5dp"
+                android:elevation="8dp"
+                android:layout_weight="1"
+                tools:ignore="UnusedAttribute"
+                android:drawableEnd="@drawable/ic_send_24dp" />
+        </LinearLayout>
 
-</LinearLayout>
-    <Button
-        android:id="@+id/setOrderId"
-        android:text="Order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:background="@color/md_red_400"
-        android:textColor="@color/White"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_marginTop="5dp"
-        android:elevation="8dp" />
-
+        <Button
+            android:id="@+id/setOrderId"
+            android:text="Order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:background="@color/md_red_400"
+            android:textColor="@color/White"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:elevation="8dp"
+            tools:ignore="UnusedAttribute" />
     </LinearLayout>
 
 </ScrollView>

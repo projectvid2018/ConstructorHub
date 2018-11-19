@@ -108,5 +108,7 @@
     <string name="upload_images">Upload Images</string>
     <string name="post">Post</string>
     <string name="description">Description</string>
+    <string name="service">Service</string>
+    <string name="price">Price</string>
 
 </resources>

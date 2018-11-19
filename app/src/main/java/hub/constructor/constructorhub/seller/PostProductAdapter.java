@@ -59,7 +59,7 @@ public class PostProductAdapter extends RecyclerView.Adapter<PostProductAdapter.
 
         holder.textView1.setText(heading);
         holder.textView2.setText(service);
-        holder.textView3.setText("Price: "+price+"Tk");
+        holder.textView3.setText("Price: "+price+" Tk");
 
         Picasso.with(mContext).load(imageUrl)
                 .placeholder(R.mipmap.ic_launcher)

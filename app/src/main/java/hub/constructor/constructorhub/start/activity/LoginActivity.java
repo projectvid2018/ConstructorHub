@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private CardView cardView;
+    private ProgressBar progressBar;
 
 
     private FirebaseAuth firebaseAuth;
@@ -34,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         cardView = findViewById(R.id.cardViewIdLogIn);
         editTextEmail = findViewById(R.id.logInEmailId);
         editTextPassword = findViewById(R.id.logInPasswordId);
+        progressBar = findViewById(R.id.logInProgressbarId);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -65,19 +68,19 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         else {
-
-
+            progressBar.setVisibility(View.VISIBLE);
             firebaseAuth.signInWithEmailAndPassword(email,password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-
                             if(task.isSuccessful()){
                                 Intent intent = new Intent(LoginActivity.this,SwitchActivity.class);
                                 startActivity(intent);
+                                progressBar.setVisibility(View.GONE);
                                 finish();
 
                             }else {
+                                progressBar.setVisibility(View.GONE);
                                 Toast.makeText(getApplicationContext(),"Please enter correct password or email.",Toast.LENGTH_LONG).show();
 
                             }

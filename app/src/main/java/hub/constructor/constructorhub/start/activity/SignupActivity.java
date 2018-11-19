@@ -15,10 +15,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import hub.constructor.constructorhub.People;
+import hub.constructor.constructorhub.User;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
 
@@ -50,14 +51,15 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("people");
-
+        databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
         editTextAddress=findViewById(R.id.AddressId);
         editTextUsername=findViewById(R.id.userNameId);
         editTextPhoneNo = findViewById(R.id.phoneNoId);
         editTextEmail = findViewById(R.id.emailId);
         editTextPassword = findViewById(R.id.passwordId);
         cardView = findViewById(R.id.SignupId);
+
+        progressBar = findViewById(R.id.signUpProgressbarId);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -131,27 +133,34 @@ public class SignupActivity extends AppCompatActivity {
 
 
         else{
-
-
-
-//            progressBar.setVisibility(View.VISIBLE);
-
+            progressBar.setVisibility(View.VISIBLE);
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                   // progressBar.setVisibility(View.GONE);
                     if(task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"User Registration Successful",Toast.LENGTH_LONG).show();
 
-                        String id = databaseReference.push().getKey();
+                        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+                        String user_uid = current_user.getUid();
 
-                        People people = new People(id,address,username,phoneNo,email,password);
-                        databaseReference.child(id).setValue(people);
-                        Intent intent = new Intent(getApplicationContext(),SwitchActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        User newUser = new User(user_uid,address,username,phoneNo,email,password);
+                        databaseReference.child(user_uid).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                if (task.isSuccessful()){
+                                    progressBar.setVisibility(View.GONE);
+                                    Intent intent = new Intent(getApplicationContext(),SwitchActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                    Toast.makeText(getApplicationContext(),"User Registration Successful",Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            }
+                        });
+
 
                     }else {
+                        progressBar.setVisibility(View.GONE);
                         if(task.getException() instanceof FirebaseAuthUserCollisionException){
                             Toast.makeText(getApplicationContext(),"You are already registered",Toast.LENGTH_SHORT).show();
 

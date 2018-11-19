@@ -26,6 +26,12 @@
             android:src="@drawable/construct_hub_launcher"
             />
         <!-- Username -->
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/logInProgressbarId"
+            android:visibility="gone"
+            />
 
         <EditText
             android:id="@+id/logInEmailId"
@@ -33,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:hint="Username"
+            android:hint="Email"
             android:textColorHint="@color/md_teal_400"
             android:inputType="textPersonName"
             android:drawableLeft="@drawable/ic_profile_24dp"/>
