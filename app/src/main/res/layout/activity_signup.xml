@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:layout_margin="20dp">
@@ -29,22 +29,24 @@
                 android:id="@+id/userNameId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
+                android:hint="@string/name"
                 android:textColorHint="@color/md_teal_400"
-                android:inputType="text"
+                android:inputType="textCapWords"
                 android:drawableLeft="@drawable/ic_profile_24dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/ic_profile_24dp" />
 
-            <!-- Username -->
+            <!-- Location -->
             <EditText
                 android:id="@+id/AddressId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Location"
                 android:textColorHint="@color/md_teal_400"
-                android:inputType="text"
+                android:inputType="textCapWords"
                 android:drawableLeft="@drawable/ic_location_24dp"
-                android:layout_marginTop="5dp"/>
+                android:layout_marginTop="5dp"
+                android:drawableStart="@drawable/ic_location_24dp" />
 
 
 
@@ -54,7 +56,7 @@
                 android:id="@+id/emailId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email id"
+                android:hint="Email"
                 android:textColorHint="@color/md_teal_400"
                 android:inputType="textEmailAddress"
                 android:layout_marginTop="5dp"

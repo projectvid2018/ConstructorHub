@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import hub.constructor.constructorhub.R;
+import hub.constructor.constructorhub.nav.activity.SwitchActivity;
 
 public class SplashActivity extends Activity implements Runnable
 {
@@ -30,9 +34,19 @@ public class SplashActivity extends Activity implements Runnable
         }
         finally
         {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-            finish();
+
+            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (currentUser != null){
+                startActivity(new Intent(SplashActivity.this, SwitchActivity.class));
+                finish();
+            }else {
+                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                finish();
+            }
+
         }
     }
+
+
 
 }

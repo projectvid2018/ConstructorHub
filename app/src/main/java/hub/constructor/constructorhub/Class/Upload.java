@@ -1,8 +1,10 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.Class;
 
 public class Upload {
 
     private String userUid;
+    private String userName;
+    private String email;
     private String heading;
     private String companyName;
     private String companyAddress;
@@ -14,10 +16,20 @@ public class Upload {
     public Upload() {
     }
 
-    public Upload(String userUid, String heading, String companyName, String companyAddress,
-                  String service, String price, String description,
-                  String mImageUrl) {
+
+    public Upload(String heading, String service, String price, String mImageUrl) {
+        this.heading = heading;
+        this.service = service;
+        this.price = price;
+        this.mImageUrl = mImageUrl;
+    }
+
+    public Upload(String userUid, String userName, String email, String heading,
+                  String companyName, String companyAddress, String service,
+                  String price, String description, String mImageUrl) {
         this.userUid = userUid;
+        this.userName = userName;
+        this.email = email;
         this.heading = heading;
         this.companyName = companyName;
         this.companyAddress = companyAddress;
@@ -27,19 +39,28 @@ public class Upload {
         this.mImageUrl = mImageUrl;
     }
 
-    public Upload(String heading, String service, String price, String mImageUrl) {
-        this.heading = heading;
-        this.service = service;
-        this.price = price;
-        this.mImageUrl = mImageUrl;
-    }
-
     public String getUserUid() {
         return userUid;
     }
 
     public void setUserUid(String userUid) {
         this.userUid = userUid;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getHeading() {

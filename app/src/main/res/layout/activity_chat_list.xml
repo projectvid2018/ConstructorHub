@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/WhiteSmoke"
+    tools:context=".chat_activity.ChatListActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/chatListToolbarId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/Widget.AppCompat.PopupMenu"
+
+        >
+        <ImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/chat"
+            android:padding="5dp"
+            android:contentDescription="@string/todo" />
+        <TextView
+            android:id="@+id/chatListNameId"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/White"
+            android:text="@string/my_chat_list"
+            android:layout_marginStart="10dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+    <!-- Message Body -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/chatListRecyclerViewId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        />
+
+</LinearLayout>

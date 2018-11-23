@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub.seller;
+package hub.constructor.constructorhub.seller_activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -18,9 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import hub.constructor.constructorhub.Adapter.PostProductAdapter;
 import hub.constructor.constructorhub.R;
-import hub.constructor.constructorhub.Upload;
-import hub.constructor.constructorhub.product.buyer.WishActivity;
+import hub.constructor.constructorhub.Class.Upload;
 
 public class SupOrdersActivity extends AppCompatActivity {
 

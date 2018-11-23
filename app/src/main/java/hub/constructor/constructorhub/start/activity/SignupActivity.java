@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import hub.constructor.constructorhub.User;
+import hub.constructor.constructorhub.Class.User;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
 
@@ -29,10 +29,10 @@ public class SignupActivity extends AppCompatActivity {
 
     private static final String TAG= "SignupActivity";
 
-    private EditText editTextAddress;
     private EditText editTextUsername;
-    private EditText editTextPhoneNo;
+    private EditText editTextAddress;
     private EditText editTextEmail;
+    private EditText editTextPhoneNo;
     private EditText editTextPassword;
     CardView cardView;
 
@@ -52,10 +52,10 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Registered Users");
-        editTextAddress=findViewById(R.id.AddressId);
         editTextUsername=findViewById(R.id.userNameId);
-        editTextPhoneNo = findViewById(R.id.phoneNoId);
+        editTextAddress=findViewById(R.id.AddressId);
         editTextEmail = findViewById(R.id.emailId);
+        editTextPhoneNo = findViewById(R.id.phoneNoId);
         editTextPassword = findViewById(R.id.passwordId);
         cardView = findViewById(R.id.SignupId);
 
@@ -75,23 +75,23 @@ public class SignupActivity extends AppCompatActivity {
 
 
     public void addMember(){
-        final String address = editTextAddress.getText().toString().trim();
         final String username = editTextUsername.getText().toString().trim();
+        final String address = editTextAddress.getText().toString().trim();
         final String phoneNo = editTextPhoneNo.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
 
-        //Address
-        if(address.isEmpty()){
-            editTextUsername.setError("Insert address");
+
+        //UserName
+        if(username.isEmpty()){
+            editTextUsername.setError("Insert name");
             editTextUsername.requestFocus();
             return;
         }
-
-        //UserName
-        else if(username.isEmpty()){
-            editTextUsername.setError("Insert name");
-            editTextUsername.requestFocus();
+        //Address
+        if(address.isEmpty()){
+            editTextAddress.setError("Insert address");
+            editTextAddress.requestFocus();
             return;
         }
 
@@ -142,7 +142,7 @@ public class SignupActivity extends AppCompatActivity {
                         FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
                         String user_uid = current_user.getUid();
 
-                        User newUser = new User(user_uid,address,username,phoneNo,email,password);
+                        User newUser = new User(user_uid,username,address,phoneNo,email,password);
                         databaseReference.child(user_uid).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

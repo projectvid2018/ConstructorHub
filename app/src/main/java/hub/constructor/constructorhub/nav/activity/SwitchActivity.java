@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import hub.constructor.constructorhub.seller.sellerModeActivity;
-import hub.constructor.constructorhub.product.buyer.ByerModeActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import hub.constructor.constructorhub.seller_activity.sellerModeActivity;
+import hub.constructor.constructorhub.product.buyer.BuyerModeActivity;
 import hub.constructor.constructorhub.R;
+import hub.constructor.constructorhub.start.activity.LoginActivity;
 
 public class SwitchActivity extends AppCompatActivity {
 
@@ -26,7 +30,20 @@ public class SwitchActivity extends AppCompatActivity {
     }
 
     public void buyer(View view) {
-        Intent intent = new Intent(SwitchActivity.this,ByerModeActivity.class);
+        Intent intent = new Intent(SwitchActivity.this,BuyerModeActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null){
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }
     }
 }

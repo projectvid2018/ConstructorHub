@@ -7,7 +7,7 @@
     android:background="@color/md_teal_50"
     android:clickable="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".product.buyer.ByerModeActivity"
+    tools:context=".product.buyer.BuyerModeActivity"
     tools:showIn="@layout/app_bar_main"
     android:focusable="true">
 

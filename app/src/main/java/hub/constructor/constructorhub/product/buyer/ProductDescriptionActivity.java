@@ -20,9 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import hub.constructor.constructorhub.chat_activity.ChatActivity;
 import hub.constructor.constructorhub.R;
-import hub.constructor.constructorhub.Upload;
-import hub.constructor.constructorhub.product.buyer.ChatActivity;
+import hub.constructor.constructorhub.Class.Upload;
 
 import static hub.constructor.constructorhub.product.buyer.ProductsActivity.EXTRA_COMPANY_ADDRESS;
 import static hub.constructor.constructorhub.product.buyer.ProductsActivity.EXTRA_COMPANY_NAME;
@@ -42,6 +42,10 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
     private StorageReference storageReference;
     private DatabaseReference mRef;
+    public static final String SELLER_UID = "seller_uid";
+    public static final String SELLER_PRODUCT_URL = "seller_product_url";
+    public static final String SELLER_PRODUCT_HEADING = "seller_product_heading";
+    public static final String SELLER_PRODUCT_PRICE = "seller_product_price";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class ProductDescriptionActivity extends AppCompatActivity {
 
         mRef = FirebaseDatabase.getInstance().getReference();
 
+        // From Product Description Activity
         final Intent intent = getIntent();
         final String imageUrl = intent.getStringExtra(EXTRA_URL);
         final String heading = intent.getStringExtra(EXTRA_HEADING);
@@ -77,6 +82,8 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         TextView textViewPrice = findViewById(R.id.productDetailsPriceId);
         TextView textViewDescription = findViewById(R.id.productDetailsDescriptionId);
 
+
+
         Picasso.with(this).load(imageUrl).fit().centerInside().into(imageView);
         textViewHeading.setText(heading);
         textViewCompanyName.setText("Company: " + companyName);
@@ -85,12 +92,28 @@ public class ProductDescriptionActivity extends AppCompatActivity {
         textViewPrice.setText("Price : " + price+ " TK");
         textViewDescription.setText(description);
 
+        if(currentUser_uid.equals(seller_uid)){
+            chatButton.setVisibility(View.GONE);
+            wishListButton.setVisibility(View.GONE);
+            orderButton.setVisibility(View.GONE);
+        }
+        else {
+            chatButton.setVisibility(View.VISIBLE);
+            wishListButton.setVisibility(View.VISIBLE);
+            orderButton.setVisibility(View.VISIBLE);
+        }
+
         chatButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chatButton.setEnabled(false);
-                Intent intent1 = new Intent(getApplicationContext(),ChatActivity.class);
-                startActivity(intent1);
+
+                // Send to ChatActivity
+                Intent sellerIdIntent = new Intent(getApplicationContext(),ChatActivity.class);
+                sellerIdIntent.putExtra(SELLER_UID,seller_uid);
+                sellerIdIntent.putExtra(SELLER_PRODUCT_URL,imageUrl);
+                sellerIdIntent.putExtra(SELLER_PRODUCT_HEADING,heading);
+                sellerIdIntent.putExtra(SELLER_PRODUCT_PRICE,price);
+                startActivity(sellerIdIntent);
             }
         });
 

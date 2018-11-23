@@ -1,11 +1,10 @@
-package hub.constructor.constructorhub.seller;
+package hub.constructor.constructorhub.seller_activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,6 +16,7 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import hub.constructor.constructorhub.chat_activity.ChatListActivity;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.SettingsActivity;
@@ -78,11 +78,9 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
 
             AlertDialog.Builder builder=new AlertDialog.Builder(sellerModeActivity.this); //-------Main is name of the activity
             builder.setMessage("Do you want to exit?");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
-
-                    finish();
                     Intent intent=new Intent(sellerModeActivity.this,LoginActivity.class);
                     intent.putExtra("finish", true);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //----------------------------------- To clean up all activities
@@ -124,9 +122,6 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
-
-    CardView add_new_product , posted_products, sup_transaction, sup_orders, sup_chat;
-
     public void add_new_product(View view) {
         Intent intent = new Intent(sellerModeActivity.this,AddNewProductActivity.class);
         startActivity(intent);
@@ -148,7 +143,7 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
     }
 
     public void sup_chat(View view) {
-        Intent intent = new Intent(sellerModeActivity.this,SupChatActivity.class);
+        Intent intent = new Intent(sellerModeActivity.this,ChatListActivity.class);
         startActivity(intent);
     }
 

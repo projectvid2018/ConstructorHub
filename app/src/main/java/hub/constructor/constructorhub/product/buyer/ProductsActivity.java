@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hub.constructor.constructorhub.R;
-import hub.constructor.constructorhub.Upload;
-import hub.constructor.constructorhub.seller.PostProductAdapter;
+import hub.constructor.constructorhub.Class.Upload;
+import hub.constructor.constructorhub.Adapter.PostProductAdapter;
 
 public class ProductsActivity extends AppCompatActivity implements PostProductAdapter.OnItemClickListener {
 
@@ -58,7 +58,6 @@ public class ProductsActivity extends AppCompatActivity implements PostProductAd
                 }
                 mProductAdapter = new PostProductAdapter(ProductsActivity.this,mUploads);
                 recyclerView.setAdapter(mProductAdapter);
-
                 mProductAdapter.setOnItemClickListener(ProductsActivity.this);
 
             }
@@ -75,9 +74,9 @@ public class ProductsActivity extends AppCompatActivity implements PostProductAd
 
     @Override
     public void onItemClick(int position) {
+
         Intent detailIntent = new Intent(this, ProductDescriptionActivity.class);
         Upload clickedItem = mUploads.get(position);
-
         detailIntent.putExtra(EXTRA_URL, clickedItem.getmImageUrl());
         detailIntent.putExtra(EXTRA_HEADING, clickedItem.getHeading());
         detailIntent.putExtra(EXTRA_COMPANY_NAME, clickedItem.getCompanyName());

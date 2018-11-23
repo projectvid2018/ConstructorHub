@@ -1,4 +1,4 @@
-package hub.constructor.constructorhub;
+package hub.constructor.constructorhub.Class;
 
 public class User {
 

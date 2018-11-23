@@ -1,12 +1,8 @@
-package hub.constructor.constructorhub.seller;
+package hub.constructor.constructorhub.seller_activity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,29 +14,27 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.Objects;
-
+import hub.constructor.constructorhub.Class.User;
 import hub.constructor.constructorhub.R;
-import hub.constructor.constructorhub.Upload;
+import hub.constructor.constructorhub.Class.Upload;
 
 public class AddNewProductActivity extends AppCompatActivity {
 
@@ -59,6 +53,8 @@ public class AddNewProductActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private DatabaseReference mRef;
     private UploadTask uploadTask;
+    String uploadUser;
+    String userEmail;
 
     private ProgressBar progressBar;
 
@@ -85,6 +81,8 @@ public class AddNewProductActivity extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference();
         mRef = FirebaseDatabase.getInstance().getReference();
 
+
+
         chooseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,6 +96,22 @@ public class AddNewProductActivity extends AppCompatActivity {
         postButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                DatabaseReference userNameRef = FirebaseDatabase.getInstance()
+                        .getReference("Registered Users")
+                        .child(firebaseUser.getUid());
+                userNameRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        uploadUser = dataSnapshot.child("userName").getValue().toString();
+                        userEmail = dataSnapshot.child("userEmail").getValue().toString();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
                 UploadImage();
             }
         });
@@ -171,7 +185,8 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                             FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
                             final String user_uid = current_user.getUid();
-                            final Upload upload = new Upload(user_uid,heading,companyName,companyAddress,service,price,description,miUrlOk);
+                            final Upload upload = new Upload(user_uid,uploadUser,userEmail,
+                                    heading,companyName,companyAddress,service,price,description,miUrlOk);
                             final String uploadId = mRef.push().getKey();
                             mRef.child("My Uploads/"+user_uid).child(uploadId).setValue(upload)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {

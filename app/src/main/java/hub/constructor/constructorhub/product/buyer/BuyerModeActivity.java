@@ -16,7 +16,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
+import hub.constructor.constructorhub.chat_activity.ChatListActivity;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.NotificationsActivity;
@@ -24,7 +26,7 @@ import hub.constructor.constructorhub.nav.activity.SettingsActivity;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
 import hub.constructor.constructorhub.start.activity.LoginActivity;
 
-public class ByerModeActivity extends AppCompatActivity
+public class BuyerModeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -47,6 +49,23 @@ public class ByerModeActivity extends AppCompatActivity
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser == null){
+
+            sendToStart();
+
+        }
+    }
+    public void sendToStart(){
+        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -65,33 +84,26 @@ public class ByerModeActivity extends AppCompatActivity
 
         if (id == R.id.nav_profile) {
 
-                Intent intent = new Intent(ByerModeActivity.this,SwitchActivity.class);
+                Intent intent = new Intent(BuyerModeActivity.this,SwitchActivity.class);
                 startActivity(intent);
 
         } else if (id == R.id.nav_notifications) {
-            Intent intent = new Intent(ByerModeActivity.this,NotificationsActivity.class);
+            Intent intent = new Intent(BuyerModeActivity.this,NotificationsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_settings) {
-            Intent intent = new Intent(ByerModeActivity.this,SettingsActivity.class);
+            Intent intent = new Intent(BuyerModeActivity.this,SettingsActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.nav_log_out) {
             FirebaseAuth.getInstance().signOut();
 
-            AlertDialog.Builder builder=new AlertDialog.Builder(ByerModeActivity.this); //-------Main is name of the activity
+            AlertDialog.Builder builder=new AlertDialog.Builder(BuyerModeActivity.this); //-------Main is name of the activity
             builder.setMessage("Do you want to exit?");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
-
-                    finish();
-                    Intent intent =new Intent(ByerModeActivity.this,LoginActivity.class);
-                    intent.putExtra("finish", true);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //-------------------------------------- To clean up all activities
-                    startActivity(intent);
-                    finish();
-
+                    sendToStart();
                 }
             });
 
@@ -117,7 +129,7 @@ public class ByerModeActivity extends AppCompatActivity
 
         }
         else if (id == R.id.nav_feedback) {
-            Intent intent = new Intent(ByerModeActivity.this,FeedbackActivity.class);
+            Intent intent = new Intent(BuyerModeActivity.this,FeedbackActivity.class);
             startActivity(intent);
 
         }
@@ -130,27 +142,27 @@ public class ByerModeActivity extends AppCompatActivity
     CardView products, watch, transaction, orders, chat;
 
     public void products(View view) {
-        Intent intent = new Intent(ByerModeActivity.this,ProductsActivity.class);
+        Intent intent = new Intent(BuyerModeActivity.this,ProductsActivity.class);
         startActivity(intent);
     }
 
     public void watch(View view) {
-        Intent intent = new Intent(ByerModeActivity.this,WishActivity.class);
+        Intent intent = new Intent(BuyerModeActivity.this,WishActivity.class);
         startActivity(intent);
     }
 
     public void transaction(View view) {
-        Intent intent = new Intent(ByerModeActivity.this,TransactionsActivity.class);
+        Intent intent = new Intent(BuyerModeActivity.this,TransactionsActivity.class);
         startActivity(intent);
     }
 
     public void orders(View view) {
-        Intent intent = new Intent(ByerModeActivity.this,OrdersActivity.class);
+        Intent intent = new Intent(BuyerModeActivity.this,OrdersActivity.class);
         startActivity(intent);
     }
 
     public void chat(View view) {
-        Intent intent = new Intent(ByerModeActivity.this,ChatActivity.class);
+        Intent intent = new Intent(getApplicationContext(),ChatListActivity.class);
         startActivity(intent);
     }
 

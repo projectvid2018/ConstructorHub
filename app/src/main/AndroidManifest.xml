@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="hub.constructor.constructorhub">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,9 +13,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity
-            android:name=".product.buyer.ByerModeActivity"
+            android:name=".product.buyer.BuyerModeActivity"
             android:label="@string/buyer_mode"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".start.activity.SplashActivity">
@@ -37,58 +39,54 @@
         <activity
             android:name=".product.buyer.ProductsActivity"
             android:label="@string/products"
-            android:parentActivityName=".product.buyer.ByerModeActivity" />
+            android:parentActivityName=".product.buyer.BuyerModeActivity" />
         <activity
             android:name=".product.buyer.WishActivity"
             android:label="Wish List"
-            android:parentActivityName=".product.buyer.ByerModeActivity" />
+            android:parentActivityName=".product.buyer.BuyerModeActivity" />
         <activity
             android:name=".product.buyer.TransactionsActivity"
             android:label="@string/transactions"
-            android:parentActivityName=".product.buyer.ByerModeActivity" />
+            android:parentActivityName=".product.buyer.BuyerModeActivity" />
         <activity
             android:name=".product.buyer.OrdersActivity"
             android:label="@string/orders"
-            android:parentActivityName=".product.buyer.ByerModeActivity" />
+            android:parentActivityName=".product.buyer.BuyerModeActivity" />
         <activity
-            android:name=".product.buyer.ChatActivity"
-            android:label="@string/live_chat"
-            android:parentActivityName=".product.buyer.ByerModeActivity" />
+            android:name=".chat_activity.ChatActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+             />
         <activity
             android:name=".nav.activity.SwitchActivity"
             android:label="@string/switch_profile" />
         <activity
-            android:name=".seller.sellerModeActivity"
-            android:label="@string/supplier_mode"
+            android:name=".seller_activity.sellerModeActivity"
+            android:label="Seller Mode"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".seller.SupTransactionActivity"
+            android:name=".seller_activity.SupTransactionActivity"
             android:label="@string/transactions"
-            android:parentActivityName=".seller.sellerModeActivity" />
+            android:parentActivityName=".seller_activity.sellerModeActivity" />
         <activity
-            android:name=".seller.SupChatActivity"
-            android:label="@string/live_chat"
-            android:parentActivityName=".seller.sellerModeActivity" />
-        <activity
-            android:name=".seller.SupOrdersActivity"
+            android:name=".seller_activity.SupOrdersActivity"
             android:label="@string/orders"
-            android:parentActivityName=".seller.sellerModeActivity" />
+            android:parentActivityName=".seller_activity.sellerModeActivity" />
         <activity
-            android:name=".seller.PostedProductsActivity"
+            android:name=".seller_activity.PostedProductsActivity"
             android:label="@string/posted_products"
-            android:parentActivityName=".seller.sellerModeActivity" />
+            android:parentActivityName=".seller_activity.sellerModeActivity" />
         <activity
-            android:name=".seller.AddNewProductActivity"
+            android:name=".seller_activity.AddNewProductActivity"
             android:label="@string/add_new_product"
-            android:parentActivityName=".seller.sellerModeActivity" />
+            android:parentActivityName=".seller_activity.sellerModeActivity" />
         <activity
             android:name=".nav.activity.NotificationsActivity"
             android:label="@string/notifications"
-            android:parentActivityName=".product.buyer.ByerModeActivity" />
+            android:parentActivityName=".product.buyer.BuyerModeActivity" />
         <activity
-            android:name=".seller.SupNotificationActivity"
+            android:name=".seller_activity.SupNotificationActivity"
             android:label="@string/notifications"
-            android:parentActivityName=".seller.sellerModeActivity" />
+            android:parentActivityName=".seller_activity.sellerModeActivity" />
         <activity
             android:name=".start.activity.ForgotpassActivity"
             android:label="Forget password" />
@@ -99,10 +97,17 @@
             android:name=".nav.activity.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity android:name=".ProductProfileActivity" />
-        <activity android:name=".product.buyer.ProductDescriptionActivity"
+        <activity
+            android:name=".product.buyer.ProductDescriptionActivity"
             android:label="Products Details"
-            android:parentActivityName=".product.buyer.ProductsActivity"
-            ></activity>
+            android:parentActivityName=".product.buyer.ProductsActivity" />
+        <activity
+            android:name=".chat_activity.ChatListActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+
+            >
+
+        </activity>
     </application>
 
 </manifest>

@@ -19,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hub.constructor.constructorhub.R;
-import hub.constructor.constructorhub.Upload;
-import hub.constructor.constructorhub.seller.PostProductAdapter;
+import hub.constructor.constructorhub.Class.Upload;
+import hub.constructor.constructorhub.Adapter.PostProductAdapter;
 
 public class WishActivity extends AppCompatActivity {
 

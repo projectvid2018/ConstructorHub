@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:scrollbars="vertical"
     android:background="@color/md_teal_50"
-    tools:context=".seller.AddNewProductActivity">
+    tools:context=".seller_activity.AddNewProductActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/heading"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="textPersonName"
+            android:inputType="textCapWords"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_headline_24dp"
             android:autofillHints=""
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/company_name"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="textPersonName"
+            android:inputType="textCapCharacters"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_business_24dp"
             android:autofillHints="" tools:targetApi="o">
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/address"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="textPostalAddress"
+            android:inputType="textCapWords"
             android:layout_width="fill_parent"
             android:drawableLeft="@drawable/ic_location_24dp"
             android:autofillHints="Dhaka"
@@ -80,7 +80,7 @@
             android:layout_height="100dp"
             android:hint="@string/full_description"
             android:textColorHint="@color/md_teal_400"
-            android:inputType="textMultiLine"
+            android:inputType="textCapSentences"
             android:lines="10"
             android:gravity="top"
             android:layout_width="fill_parent"
