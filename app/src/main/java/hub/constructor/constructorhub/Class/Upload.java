@@ -3,6 +3,7 @@ package hub.constructor.constructorhub.Class;
 public class Upload {
 
     private String userUid;
+    private String productId;
     private String userName;
     private String email;
     private String heading;
@@ -24,10 +25,11 @@ public class Upload {
         this.mImageUrl = mImageUrl;
     }
 
-    public Upload(String userUid, String userName, String email, String heading,
+    public Upload(String userUid, String productId, String userName, String email, String heading,
                   String companyName, String companyAddress, String service,
                   String price, String description, String mImageUrl) {
         this.userUid = userUid;
+        this.productId = productId;
         this.userName = userName;
         this.email = email;
         this.heading = heading;
@@ -45,6 +47,14 @@ public class Upload {
 
     public void setUserUid(String userUid) {
         this.userUid = userUid;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public String getUserName() {

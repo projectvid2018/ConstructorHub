@@ -149,9 +149,24 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
+        final DatabaseReference chatListRef = FirebaseDatabase.getInstance()
+                .getReference("Chat List")
+                .child(sellerUid)
+                .child(current_user.getUid());
+        chatRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.exists()){
+                    chatListRef.child("id").setValue(current_user.getUid());
+                }
+            }
 
-        DatabaseReference chatListRef = FirebaseDatabase.getInstance()
-                .getReference();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void readMessage(final String current_user_id, final String sellerUid){

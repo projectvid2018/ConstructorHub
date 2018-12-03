@@ -185,15 +185,15 @@ public class AddNewProductActivity extends AppCompatActivity {
 
                             FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
                             final String user_uid = current_user.getUid();
-                            final Upload upload = new Upload(user_uid,uploadUser,userEmail,
+                            final String productId = mRef.push().getKey();
+                            final Upload upload = new Upload(user_uid,productId,uploadUser,userEmail,
                                     heading,companyName,companyAddress,service,price,description,miUrlOk);
-                            final String uploadId = mRef.push().getKey();
-                            mRef.child("My Uploads/"+user_uid).child(uploadId).setValue(upload)
+                            mRef.child("My Uploads/"+user_uid).child(productId).setValue(upload)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()){
-                                                mRef.child("Uploaded Products").child(uploadId).setValue(upload)
+                                                mRef.child("Uploaded Products").child(productId).setValue(upload)
                                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {

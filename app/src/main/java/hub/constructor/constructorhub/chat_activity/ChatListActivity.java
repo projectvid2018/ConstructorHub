@@ -22,6 +22,7 @@ import java.util.List;
 import hub.constructor.constructorhub.Adapter.ChatListAdapter;
 import hub.constructor.constructorhub.Class.Chat;
 import hub.constructor.constructorhub.Class.Upload;
+import hub.constructor.constructorhub.Class.User;
 import hub.constructor.constructorhub.R;
 
 public class ChatListActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class ChatListActivity extends AppCompatActivity {
     private Toolbar toolbarChatList;
     private RecyclerView recyclerView;
     private ChatListAdapter chatListAdapter;
-    private List<Upload> mUser;
+    private List<User> mUser;
     private FirebaseUser firebaseUser;
     private DatabaseReference dRef;
 
@@ -91,7 +92,7 @@ public class ChatListActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUser.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Upload upload = snapshot.getValue(Upload.class);
+                    User upload = snapshot.getValue(User.class);
                     for (ChatList chatList: userList){
                         if (upload.getUserUid().equals(chatList.id)){
                             mUser.add(upload);
