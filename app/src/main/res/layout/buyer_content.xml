@@ -241,7 +241,7 @@
                 android:clickable="true"
                 android:contextClickable="true"
                 android:longClickable="true"
-                android:onClick="chat"
+                android:onClick="goChatList"
                 android:elevation="8dp"
                 android:focusable="true"
                 android:hapticFeedbackEnabled="true"

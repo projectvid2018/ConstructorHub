@@ -14,7 +14,7 @@
         android:hint="@string/hello"
         android:background="@drawable/message_background_left"
         android:padding="5dp"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
         />
 
 </RelativeLayout>

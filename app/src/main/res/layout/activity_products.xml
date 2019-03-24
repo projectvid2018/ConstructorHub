@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@color/md_teal_50"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:focusable="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/buyerProductRecycleViewId"

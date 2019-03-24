@@ -2,6 +2,7 @@ package hub.constructor.constructorhub.Class;
 
 public class User {
 
+    private Upload userUpload;
     private String userUid;
     private String userName;
     private String userAddress;
@@ -12,13 +13,31 @@ public class User {
     public User() {
     }
 
-    public User(String userUid, String userName, String userAddress, String userPhone, String userEmail, String userPassword) {
+    public User(String userUid, String userName, String userAddress,
+                String userPhone, String userEmail, String userPassword) {
         this.userUid = userUid;
         this.userName = userName;
         this.userAddress = userAddress;
         this.userPhone = userPhone;
         this.userEmail = userEmail;
         this.userPassword = userPassword;
+    }
+
+    public User(Upload userUpload, String userUid, String userName, String userAddress,
+                String userPhone, String userEmail, String userPassword) {
+        this.userUpload = userUpload;
+        this.userUid = userUid;
+        this.userName = userName;
+        this.userAddress = userAddress;
+        this.userPhone = userPhone;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
+    public Upload getUserUpload(){
+        return userUpload;
+    }
+    public void setUserUpload(Upload userUpload){
+        this.userUpload = userUpload;
     }
 
     public String getUserUid() {

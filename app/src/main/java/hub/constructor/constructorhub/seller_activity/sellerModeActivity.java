@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -13,9 +14,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import hub.constructor.constructorhub.chat_activity.ChatActivity;
 import hub.constructor.constructorhub.chat_activity.ChatListActivity;
 import hub.constructor.constructorhub.R;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
@@ -40,6 +49,8 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        updateNavHeader();
     }
 
     @Override
@@ -122,6 +133,34 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
         return true;
     }
 
+    public void updateNavHeader(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        final TextView textView1 = headerView.findViewById(R.id.navSellerUsernameId);
+        final TextView textView2 = headerView.findViewById(R.id.navSellerEmailID);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String user_id = currentUser.getUid();
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("Registered Users/" + user_id);
+
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("userName").getValue().toString();
+                String email = dataSnapshot.child("userEmail").getValue().toString();
+
+                textView1.setText(name);
+                textView2.setText(email);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     public void add_new_product(View view) {
         Intent intent = new Intent(sellerModeActivity.this,AddNewProductActivity.class);
         startActivity(intent);
@@ -142,9 +181,9 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
         startActivity(intent);
     }
 
-    public void sup_chat(View view) {
-        Intent intent = new Intent(sellerModeActivity.this,ChatListActivity.class);
+
+    public void goChatList(View view) {
+        Intent intent = new Intent(getApplicationContext(), ChatListActivity.class);
         startActivity(intent);
     }
-
 }

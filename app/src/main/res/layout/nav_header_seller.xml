@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="210dp"
-    android:background="@color/md_light_blue_A200"
+    android:layout_height="wrap_content"
+    android:background="@color/md_red_600"
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -17,8 +17,7 @@
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_gravity="right"
-        android:src="@drawable/buyer" />
-
+        android:src="@drawable/seller"/>
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -28,16 +27,21 @@
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
+        android:id="@+id/navSellerUsernameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/Black"
+        android:textSize="20sp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/navSellerEmailID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/Black"
+        android:textSize="15sp"
         android:text="@string/nav_header_subtitle" />
 
 </LinearLayout>

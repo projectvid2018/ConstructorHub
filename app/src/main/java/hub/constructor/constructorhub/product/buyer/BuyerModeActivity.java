@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.view.View;
@@ -14,9 +15,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import hub.constructor.constructorhub.chat_activity.ChatListActivity;
 import hub.constructor.constructorhub.R;
@@ -29,22 +36,37 @@ import hub.constructor.constructorhub.start.activity.LoginActivity;
 public class BuyerModeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+
+
+    private DatabaseReference mRef;
+    private FirebaseUser current_user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        updateNavHeader();
+
+
+
+        //current_user = FirebaseAuth.getInstance().getCurrentUser();
+        //String user_id = current_user.getUid();
+
+
 
     }
 
@@ -52,12 +74,11 @@ public class BuyerModeActivity extends AppCompatActivity
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser == null){
-
+        FirebaseUser current_user = FirebaseAuth.getInstance().getCurrentUser();
+        if (current_user == null){
             sendToStart();
-
         }
+
     }
     public void sendToStart(){
         Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
@@ -67,7 +88,7 @@ public class BuyerModeActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -139,6 +160,35 @@ public class BuyerModeActivity extends AppCompatActivity
         return true;
     }
 
+    public void updateNavHeader(){
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        final TextView textView1 =headerView.findViewById(R.id.navBuyerUsernameId);
+        final TextView textView2 =headerView.findViewById(R.id.navBuyerEmailId);
+
+        current_user = FirebaseAuth.getInstance().getCurrentUser();
+
+        String user_id = current_user.getUid();
+        mRef = FirebaseDatabase.getInstance().getReference("Registered Users/"+user_id);
+
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.child("userName").getValue().toString();
+                String email = dataSnapshot.child("userEmail").getValue().toString();
+
+                textView1.setText(name);
+                textView2.setText(email);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     CardView products, watch, transaction, orders, chat;
 
     public void products(View view) {
@@ -161,11 +211,8 @@ public class BuyerModeActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void chat(View view) {
+    public void goChatList(View view) {
         Intent intent = new Intent(getApplicationContext(),ChatListActivity.class);
         startActivity(intent);
     }
-
-
-
 }

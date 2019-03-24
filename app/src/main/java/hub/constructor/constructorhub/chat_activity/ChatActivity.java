@@ -28,6 +28,7 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import hub.constructor.constructorhub.Adapter.MessageAdapter;
 import hub.constructor.constructorhub.Class.Chat;
+import hub.constructor.constructorhub.Class.Upload;
 import hub.constructor.constructorhub.Class.User;
 import hub.constructor.constructorhub.R;
 
@@ -37,7 +38,7 @@ import static hub.constructor.constructorhub.product.buyer.ProductDescriptionAct
 
 public class ChatActivity extends AppCompatActivity {
 
-    private TextView textViewSellerName;
+    private TextView tVReceiverName;
     private CircleImageView imageViewSeller;
     private Intent intent;
     private DatabaseReference mRef;
@@ -50,13 +51,17 @@ public class ChatActivity extends AppCompatActivity {
     private String sellerUid;
     private FirebaseUser current_user;
     private Toolbar toolbarChat;
-
+    //
+    private User user;
+    private String sellerProductHeading;
+    private String sellerProductUrl;
+//
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        textViewSellerName = findViewById(R.id.chatSellerNameId);
+        tVReceiverName = findViewById(R.id.chatSellerNameId);
         imageViewSeller = findViewById(R.id.chat_product_imageId);
         sendMessageBtn = findViewById(R.id.sendMessageBtnId);
         textMessage = findViewById(R.id.textMessageId);
@@ -79,11 +84,11 @@ public class ChatActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
 
-        // Product Description Activity
+        //From Product Description Activity
         intent = getIntent();
         sellerUid = intent.getStringExtra(SELLER_UID);
-        String sellerProductUrl = intent.getStringExtra(SELLER_PRODUCT_URL);
-        String sellerProductHeading = intent.getStringExtra(SELLER_PRODUCT_HEADING);
+        sellerProductUrl = intent.getStringExtra(SELLER_PRODUCT_URL);
+        sellerProductHeading = intent.getStringExtra(SELLER_PRODUCT_HEADING);
 
         current_user = FirebaseAuth.getInstance().getCurrentUser();
         current_user_id = current_user.getUid();
@@ -109,8 +114,8 @@ public class ChatActivity extends AppCompatActivity {
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-                textViewSellerName.setText(user.getUserName());
+                user = dataSnapshot.getValue(User.class);
+                tVReceiverName.setText(user.getUserName());
 
                 readMessage(current_user.getUid(),sellerUid);
             }
@@ -132,8 +137,9 @@ public class ChatActivity extends AppCompatActivity {
         hashMap.put("message",message);
         dbRef.child("Chats").push().setValue(hashMap);
 
+        // Add user to Chat list
         final DatabaseReference chatRef = FirebaseDatabase.getInstance()
-                .getReference("Chat List")
+                .getReference("MyChat/Chat List/")
                 .child(current_user.getUid())
                 .child(sellerUid);
         chatRef.addValueEventListener(new ValueEventListener() {
@@ -141,6 +147,22 @@ public class ChatActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
                     chatRef.child("id").setValue(sellerUid);
+                    /* Start New Add*/
+                    /*final Upload uploadChatList = new Upload(current_user_id,user.getUserName(),
+                            "No",sellerProductHeading,sellerProductUrl);
+                    final DatabaseReference cRef = FirebaseDatabase.getInstance().getReference("Products Chat");
+                    cRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            cRef.child(sellerUid).setValue(uploadChatList);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });*/
+                    /* End */
                 }
             }
 
@@ -149,15 +171,32 @@ public class ChatActivity extends AppCompatActivity {
 
             }
         });
-        final DatabaseReference chatListRef = FirebaseDatabase.getInstance()
-                .getReference("Chat List")
+
+        final DatabaseReference chatRefSeller = FirebaseDatabase.getInstance()
+                .getReference("MyChat/Chat List/")
                 .child(sellerUid)
                 .child(current_user.getUid());
-        chatRef.addValueEventListener(new ValueEventListener() {
+        chatRefSeller.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()){
-                    chatListRef.child("id").setValue(current_user.getUid());
+                    chatRefSeller.child("id").setValue(current_user_id);
+                    /* Start New Add*/
+                    /*final Upload uploadChatList = new Upload(current_user_id,user.getUserName(),
+                            "No",sellerProductHeading,sellerProductUrl);
+                    final DatabaseReference cRef = FirebaseDatabase.getInstance().getReference("Products Chat");
+                    cRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            cRef.child(current_user.getUid()).setValue(uploadChatList);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });*/
+                    /* End */
                 }
             }
 
@@ -170,7 +209,6 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void readMessage(final String current_user_id, final String sellerUid){
-
         mChat = new ArrayList<>();
         DatabaseReference sRef;
         sRef = FirebaseDatabase.getInstance().getReference("Chats");
@@ -181,7 +219,7 @@ public class ChatActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
 
-                    if ( chat.getReceiver().equals(current_user.getUid()) && chat.getSender().equals(sellerUid)
+                    if ( chat.getReceiver().equals(current_user_id) && chat.getSender().equals(sellerUid)
                             || chat.getReceiver().equals(sellerUid) && chat.getSender().equals(current_user_id)){
                         mChat.add(chat);
                     }

@@ -42,8 +42,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-
-
     <!-- Message Body -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/chatListRecyclerViewId"

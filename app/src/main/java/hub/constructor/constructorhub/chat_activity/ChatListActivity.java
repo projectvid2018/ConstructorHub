@@ -1,5 +1,6 @@
 package hub.constructor.constructorhub.chat_activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,8 +26,12 @@ import hub.constructor.constructorhub.Class.Upload;
 import hub.constructor.constructorhub.Class.User;
 import hub.constructor.constructorhub.R;
 
-public class ChatListActivity extends AppCompatActivity {
+import static hub.constructor.constructorhub.product.buyer.ProductDescriptionActivity.SELLER_UID;
 
+public class ChatListActivity extends AppCompatActivity implements ChatListAdapter.OnItemClickListener{
+
+    public static final String EXTRA_RECEIVER_NAME = "receiverName";
+    //public static final String EXTRA_SELLER_UID = "seller_uid";
     private Toolbar toolbarChatList;
     private RecyclerView recyclerView;
     private ChatListAdapter chatListAdapter;
@@ -34,7 +39,8 @@ public class ChatListActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private DatabaseReference dRef;
 
-    private List<ChatList> userList;
+    private List<ChatList> chatUserList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,21 +63,21 @@ public class ChatListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        chatUserList = new ArrayList<>();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        userList = new ArrayList<>();
 
-       dRef = FirebaseDatabase.getInstance().getReference("Chat List")
+       dRef = FirebaseDatabase.getInstance().getReference("MyChat/Chat List/")
                .child(firebaseUser.getUid());
 
        dRef.addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               userList.clear();
+               chatUserList.clear();
                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                   ChatList chatList = snapshot.getValue(ChatList.class);
-                   userList.add(chatList);
+                   ChatList chat_list = snapshot.getValue(ChatList.class);
+                   chatUserList.add(chat_list);
                }
-               chatList();
+               myChatList();
 
            }
 
@@ -83,23 +89,24 @@ public class ChatListActivity extends AppCompatActivity {
 
 
     }
-    private void chatList(){
+    private void myChatList(){
 
         mUser = new ArrayList<>();
-        dRef = FirebaseDatabase.getInstance().getReference("Uploaded Products");
+        dRef = FirebaseDatabase.getInstance().getReference("Registered Users");
         dRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUser.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    User upload = snapshot.getValue(User.class);
-                    for (ChatList chatList: userList){
-                        if (upload.getUserUid().equals(chatList.id)){
-                            mUser.add(upload);
+                    User user = snapshot.getValue(User.class);
+                    for (ChatList chatList: chatUserList){
+                        if (user.getUserUid().equals(chatList.id)){
+                            mUser.add(user);
                         }
                     }
                     chatListAdapter = new ChatListAdapter(getApplicationContext(),mUser);
                     recyclerView.setAdapter(chatListAdapter);
+                    chatListAdapter.setOnItemClickListener(ChatListActivity.this);
                 }
             }
 
@@ -111,5 +118,15 @@ public class ChatListActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent chatIntent = new Intent(this,ChatActivity.class);
+        User clickedItem = mUser.get(position);
+        chatIntent.putExtra(EXTRA_RECEIVER_NAME,clickedItem.getUserName());
+        chatIntent.putExtra(SELLER_UID,clickedItem.getUserUid());
+
+        startActivity(chatIntent);
     }
 }

@@ -8,6 +8,6 @@
         android:topLeftRadius="0dp"
         />
     <solid
-        android:color="@color/md_teal_300"/>
+        android:color="@color/DarkGray"/>
 
 </shape>

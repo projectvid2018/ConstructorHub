@@ -52,12 +52,12 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
         User uploadCurrent = mUploads.get(position);
         //String imageUrl = uploadCurrent.getmImageUrl();
         String userName = uploadCurrent.getUserName();
-        String heading = uploadCurrent.getUserAddress();
-        String price = uploadCurrent.getUserPhone();
+        String userUId = uploadCurrent.getUserUid();
+        //String price = uploadCurrent.getUserUpload().getPrice();
 
         holder.textView1.setText(userName);
-        holder.textView2.setText(heading);
-        holder.textView3.setText(price);
+        holder.textView2.setText(userUId);
+        //holder.textView3.setText(price);
 
 /*        Picasso.with(mContext).load(imageUrl)
                 .placeholder(R.mipmap.ic_launcher)

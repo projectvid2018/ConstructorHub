@@ -96,7 +96,6 @@
         <activity
             android:name=".nav.activity.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".ProductProfileActivity" />
         <activity
             android:name=".product.buyer.ProductDescriptionActivity"
             android:label="Products Details"
