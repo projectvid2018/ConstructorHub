@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:background="@color/md_teal_50"
     tools:context=".nav.activity.SwitchActivity">
 
@@ -12,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="2">
+        android:weightSum="2"
+        android:padding="5dp">
 
         <LinearLayout
             android:id="@+id/seller"
@@ -39,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:text="Seller mode"
                 android:textColor="@color/White"
-                android:textSize="40sp"
+                android:textSize="50sp"
                 android:textStyle="bold"
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
@@ -73,8 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buyer Mode"
-                android:textColor="@color/md_red_500"
-                android:textSize="40sp"
+                android:textColor="@color/White"
+                android:textSize="50sp"
                 android:textStyle="bold"
                 android:layout_gravity="end"
                 android:layout_marginEnd="20dp"
