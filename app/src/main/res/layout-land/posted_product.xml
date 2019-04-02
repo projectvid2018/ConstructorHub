@@ -14,13 +14,13 @@
     <LinearLayout
         android:id="@+id/postProductLinearLayoutId"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="200dp"
         android:orientation="horizontal"
         android:weightSum="2"
         >
         <ImageView
             android:id="@+id/postImageId"
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             app:srcCompat="@mipmap/ic_launcher_foreground"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -48,7 +48,6 @@
                 android:hint="@string/heading"
                 android:padding="3dp"
                 android:gravity="start|center_vertical"
-                android:textStyle="bold"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 tools:ignore="NestedWeights" />
             <TextView
@@ -59,7 +58,7 @@
                 android:gravity="start|center_vertical"
                 android:hint="@string/service"
                 android:padding="1dp"
-                android:textColor="@color/Green"
+                android:textColor="@color/Black"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 />
 
@@ -71,7 +70,7 @@
                 android:gravity="start|center_vertical"
                 android:hint="@string/price"
                 android:padding="3dp"
-                android:textColor="@color/DarkRed"
+                android:textColor="@color/Black"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 />
         </LinearLayout>

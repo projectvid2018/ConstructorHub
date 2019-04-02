@@ -27,10 +27,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import hub.constructor.constructorhub.chat_activity.ChatListActivity;
 import hub.constructor.constructorhub.R;
+import hub.constructor.constructorhub.nav.activity.DeveloperActivity;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.NotificationsActivity;
 import hub.constructor.constructorhub.nav.activity.SettingsActivity;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
+import hub.constructor.constructorhub.seller_activity.ConstructionEngineering;
 import hub.constructor.constructorhub.start.activity.LoginActivity;
 
 public class BuyerModeActivity extends AppCompatActivity
@@ -108,7 +110,11 @@ public class BuyerModeActivity extends AppCompatActivity
                 Intent intent = new Intent(BuyerModeActivity.this,SwitchActivity.class);
                 startActivity(intent);
 
-        } else if (id == R.id.nav_notifications) {
+        }else if(id == R.id.nav_developerId){
+            Intent intent = new Intent(getApplicationContext(), DeveloperActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_notifications) {
             Intent intent = new Intent(BuyerModeActivity.this,NotificationsActivity.class);
             startActivity(intent);
 
@@ -213,6 +219,11 @@ public class BuyerModeActivity extends AppCompatActivity
 
     public void goChatList(View view) {
         Intent intent = new Intent(getApplicationContext(),ChatListActivity.class);
+        startActivity(intent);
+    }
+
+    public void goConstructionEngineering(View view) {
+        Intent intent = new Intent(getApplicationContext(), ConstructionEngineering.class);
         startActivity(intent);
     }
 }

@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import hub.constructor.constructorhub.chat_activity.ChatActivity;
 import hub.constructor.constructorhub.chat_activity.ChatListActivity;
 import hub.constructor.constructorhub.R;
+import hub.constructor.constructorhub.nav.activity.DeveloperActivity;
 import hub.constructor.constructorhub.nav.activity.FeedbackActivity;
 import hub.constructor.constructorhub.nav.activity.SettingsActivity;
 import hub.constructor.constructorhub.nav.activity.SwitchActivity;
@@ -76,6 +77,9 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
             Intent intent = new Intent(sellerModeActivity.this,SwitchActivity.class);
             startActivity(intent);
 
+        } else if(id == R.id.nav_developerId){
+            Intent intent = new Intent(getApplicationContext(), DeveloperActivity.class);
+            startActivity(intent);
         } else if (id == R.id.nav_notifications) {
             Intent intent = new Intent(sellerModeActivity.this,SupNotificationActivity.class);
             startActivity(intent);
@@ -184,6 +188,11 @@ public class sellerModeActivity extends AppCompatActivity implements NavigationV
 
     public void goChatList(View view) {
         Intent intent = new Intent(getApplicationContext(), ChatListActivity.class);
+        startActivity(intent);
+    }
+
+    public void goConstructionEngineering(View view) {
+        Intent intent = new Intent(getApplicationContext(),ConstructionEngineering.class);
         startActivity(intent);
     }
 }

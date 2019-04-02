@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/md_teal_50"
+    android:background="@color/md_red_700"
     android:theme="@style/Theme.Design.Light"
     tools:context=".start.activity.LoginActivity">
 
@@ -38,8 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_gravity="center"
-            android:hint="Email"
-            android:textColorHint="@color/md_teal_400"
+            android:hint="  Email"
+            android:textColorHint="@color/White"
             android:inputType="textPersonName"
             android:drawableLeft="@drawable/ic_profile_24dp"/>
 
@@ -51,8 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:hint="Password"
-            android:textColorHint="@color/md_teal_500"
+            android:hint="  Password"
+            android:textColorHint="@color/White"
             android:inputType="textPassword"
             android:drawableLeft="@drawable/ic_pass_24dp"/>
 
@@ -63,15 +63,15 @@
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             app:cardCornerRadius="10dp"
-            android:elevation="6dp"
-            app:cardBackgroundColor="@color/md_teal_400"
+            android:elevation="10dp"
+            app:cardBackgroundColor="@color/md_red_900"
             android:layout_gravity="center"
             >
             <TextView
                 android:id="@+id/login"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Login"
+                android:text="LOGIN"
                 android:textColor="@color/White"
                 android:textStyle="bold"
                 android:textSize="30sp"
@@ -89,23 +89,23 @@
             android:layout_marginTop="35dp"
             android:onClick="forgotpass"
             android:text="Forgot password?"
-            android:textColor="@color/md_red_500"
+            android:textColor="@color/WhiteSmoke"
             android:textSize="15sp"
             android:theme="@style/AppTheme"/>
         <!-- Sign up -->
 
         <TextView
+            android:onClick="SignUp"
             android:id="@+id/Signup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="Sign up"
-            android:textColor="@color/md_green_500"
-            android:textSize="25sp"
+            android:text="No account yet? Create one"
+            android:textColor="@color/White"
+            android:textSize="20sp"
             android:layout_marginTop="15dp"
-            android:textStyle="bold"
             android:theme="@style/AppTheme"
-            tools:ignore="OnClick" />
+            />
 
     </LinearLayout>
 
